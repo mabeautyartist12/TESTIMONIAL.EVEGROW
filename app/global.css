@@ -1,0 +1,231 @@
+:root {
+  --bg: #0d0716;
+  --bg-2: #160b26;
+  --surface: #1e1033;
+  --purple: #7c3aed;
+  --purple-soft: #a78bfa;   /* outline ungu agak terang */
+  --purple-glow: rgba(139, 92, 246, 0.35);
+  --text: #f4efff;
+  --muted: #a99bc4;
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { color-scheme: dark; }
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% -10%, rgba(124, 58, 237, 0.28), transparent 60%),
+    radial-gradient(700px 500px at 100% 10%, rgba(168, 85, 247, 0.16), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+}
+
+/* ---------- Hero ---------- */
+.hero { text-align: center; margin-bottom: 40px; }
+
+.handle {
+  display: inline-block;
+  padding: 7px 16px;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--purple-soft);
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.hero h1 {
+  margin-top: 18px;
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  background: linear-gradient(180deg, #ffffff 30%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  max-width: 460px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.tab:hover { color: var(--text); border-color: rgba(167, 139, 250, 0.6); }
+
+.tab.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  border-color: var(--purple-soft);
+  box-shadow: 0 8px 28px var(--purple-glow);
+}
+
+.count {
+  min-width: 24px;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+  text-align: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Slider ---------- */
+.slider { position: relative; }
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 4px 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.track::-webkit-scrollbar { height: 6px; }
+.track::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 99px; }
+
+.slide {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  margin: 0;
+}
+
+/* Rasio mengikuti ukuran asli gambar: tinggi dibatasi, lebar otomatis */
+.slide img {
+  display: block;
+  height: min(68vh, 560px);
+  width: auto;
+  max-width: 86vw;
+  object-fit: contain;
+  border: 2px solid var(--purple-soft);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(124, 58, 237, 0.10);
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.slide img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 34px var(--purple-glow);
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-62%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(30, 16, 51, 0.85);
+  border: 1px solid var(--purple-soft);
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+
+.nav:hover { background: var(--purple); }
+.prev { left: -6px; }
+.next { right: -6px; }
+
+/* ---------- Empty ---------- */
+.empty {
+  max-width: 520px;
+  margin: 20px auto;
+  padding: 36px 24px;
+  text-align: center;
+  line-height: 1.6;
+  color: var(--muted);
+  border: 1px dashed rgba(167, 139, 250, 0.45);
+  border-radius: var(--radius);
+}
+
+.empty code { color: var(--purple-soft); }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(8, 3, 16, 0.92);
+  cursor: zoom-out;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 92vh;
+  border: 2px solid var(--purple-soft);
+  border-radius: var(--radius);
+  box-shadow: 0 0 60px var(--purple-glow);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Focus & motion ---------- */
+button:focus-visible {
+  outline: 3px solid var(--purple-soft);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .page { padding-top: 40px; }
+  .nav { display: none; }   /* di HP cukup geser */
+  .slide img { height: min(62vh, 480px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
