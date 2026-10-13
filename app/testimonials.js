@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import Testimonials from "./Testimonials";
+import Testimonials from "./testimonials";
 
 // Folder di /public -> nama folder = kategori testimoni
 const CATEGORIES = [
