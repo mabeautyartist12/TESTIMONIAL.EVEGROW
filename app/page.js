@@ -22,11 +22,14 @@ function getImages(folder, prefix) {
 }
 
 export default function Page() {
-  // Semua testimoni digabung jadi satu slide
   const images = FOLDERS.flatMap((f) => getImages(f.id, f.prefix));
 
   return (
     <main className="page">
+      <a className="back" href="https://lynk.id/mialynna">
+        <span aria-hidden="true">‹</span> Kembali
+      </a>
+
       <header className="hero">
         <p className="handle">@Evegrow.digital</p>
         <h1>Testimoni</h1>
