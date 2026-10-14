@@ -219,7 +219,39 @@ button:focus-visible {
   outline: 3px solid var(--purple-soft);
   outline-offset: 3px;
 }
+/* ---------- Tombol kembali ---------- */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px 20px 10px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 999px;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
 
+.back span {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.back:hover {
+  background: var(--purple);
+  border-color: var(--purple-soft);
+  box-shadow: 0 8px 24px var(--purple-glow);
+}
+
+.back:focus-visible {
+  outline: 3px solid var(--purple-soft);
+  outline-offset: 3px;
+}
 @media (max-width: 640px) {
   .page { padding-top: 40px; }
   .nav { display: none; }   /* di HP cukup geser */
